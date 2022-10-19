@@ -11,15 +11,19 @@ namespace TicketManagement
         public int TicketNumber { get; set; }
         public DateTime date { get; set; }
         public int TicketPrice { get; set; }
+        public Loction Loction { get; set; }
 
-        public TicketManagement(int ticketNumber, DateTime date, int ticketPrice)
+        public TicketManagement(int ticketNumber, DateTime date, int ticketPrice,string loction)
         {
             TicketNumber = ticketNumber;
             this.date = date;
-            TicketPrice = ticketPrice;
+            this.TicketPrice = ticketPrice;
         }
-
-     
+        
+        public void BuyPlace()
+        {
+            
+        }
     }
 
 }
