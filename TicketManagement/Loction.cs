@@ -8,11 +8,11 @@ namespace TicketManagement
 {
     class Loction
     {
-        public int Place { get; set; }
+        public string Place { get; set; }
         public int NumberOfSeats { get; set; }
 
 
-        public Loction(int place,int number)
+        public Loction(string place,int number)
         {
             Place = place;
             this.NumberOfSeats = number;
