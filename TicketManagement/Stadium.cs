@@ -10,8 +10,14 @@ namespace TicketManagement
     {
         public string name { get; set; }
         public int NumberOfSeats{ get; set; }
-        List<seat> seat = new List<seat>();
 
+        List<Seat> Seat = new List<Seat>();
+
+        public Stadium(int numberOfSeats, string name)
+        {
+            NumberOfSeats = numberOfSeats;
+            this.name = name;
+        }
 
     }
 }

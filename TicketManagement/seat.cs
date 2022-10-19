@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace TicketManagement
 {
-    class seat
+    class Seat
     {
-        public int Price { get; set; }
-        public int Id { get; set; }
-        public int Loction { get; set; }
+        private int Price { get; set; }
+        private int Id { get; set; }
+        private int Loction { get; set; }
+
+        public Seat(int price, int id, int loction)
+        {
+            Price = price;
+            Id = id;
+            Loction = loction;
+        }
+        
     }
+
 }
