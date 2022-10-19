@@ -8,21 +8,21 @@ namespace TicketManagement
 {
     class TicketManagement
     {
-        public int TicketNumber { get; set; }
-        public DateTime date { get; set; }
-        public int TicketPrice { get; set; }
-        public Loction Loction { get; set; }
+        private int TicketNumber { get; set; }
+        private DateTime date { get; set; }
+        private int TicketPrice { get; set; }
+        private Loction Loction { get; set; }
 
-        public TicketManagement(int ticketNumber, DateTime date, int ticketPrice,string loction)
+        public TicketManagement(int ticketNumber, DateTime date, int ticketPrice, Loction loction)
         {
             TicketNumber = ticketNumber;
             this.date = date;
             this.TicketPrice = ticketPrice;
         }
         
-        public void BuyPlace()
+        public void BuyPlace(int TicketNumber, Loction Loction)
         {
-            
+            int num = Loction.NumberOfSeats-TicketNumber;
         }
     }
 

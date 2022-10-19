@@ -9,6 +9,13 @@ namespace TicketManagement
     class Loction
     {
         public int Place { get; set; }
+        public int NumberOfSeats { get; set; }
 
+
+        public Loction(int place,int number)
+        {
+            Place = place;
+            this.NumberOfSeats = number;
+        }
     }
 }
