@@ -6,8 +6,8 @@ namespace TicketManagement
     {
         static void Main(string[] args)
         {
-            DateTime date = new DateTime();
-            TicketManagement gl = new TicketManagement(3,date,30);
+            DateTime date = DateTime.Now;
+            date.ToString("dddd, dd MMMM yyyy");
         }
     }
 }
