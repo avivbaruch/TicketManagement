@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TicketManagement
 {
@@ -8,6 +9,8 @@ namespace TicketManagement
         {
             DateTime date = DateTime.Now;
             date.ToString("dddd, dd MMMM yyyy");
+            Stadium s = new Stadium(3000, "sami ofer");
+   
         }
     }
 }

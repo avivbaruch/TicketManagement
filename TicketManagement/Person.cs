@@ -10,8 +10,13 @@ namespace TicketManagement
     {
         private string FirstName { get; set; }
         private string LastName { get; set; }
-        private int id { get; set; }
+        public int id { get; set; }
 
-
+        public Person(string firstName, string lastName, int id)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            this.id = id;
+        }
     }
 }
