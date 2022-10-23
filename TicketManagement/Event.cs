@@ -8,7 +8,7 @@ namespace TicketManagement
 {
     class Event
     {
-        public int OrderNumber { get; set; } 
+        public int OrderNumber { get; set; }
         public Stadium Loction { get; set; }
         public DateTime date { get; set; }
         public int TicketNumber { get; set; }
@@ -28,11 +28,15 @@ namespace TicketManagement
 
         public void ByTicket(int TicketNumber, Person person)
         {
-          this.TicketNumber = Loction.NumberOfSeats-TicketNumber;
-            seat.Add(person);
-            date = DateTime.Now;
-            date.ToString("dddd, dd MMMM yyyy");
-            OrderNumber++;
+            while (this.TicketNumber < Loction.NumberOfSeats)
+            {
+                this.TicketNumber = Loction.NumberOfSeats - TicketNumber;
+                seat.Add(person);
+                date = DateTime.Now;
+                date.ToString("dddd, dd MMMM yyyy");
+                OrderNumber++;
+            }
+            Console.WriteLine("There are no places for the show");
 
         }
         public void OrderCanceling(Person person, int TicketNumber)
