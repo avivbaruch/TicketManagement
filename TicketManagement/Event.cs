@@ -8,29 +8,36 @@ namespace TicketManagement
 {
     class Event
     {
-        public int id { get; set; }
+        public int OrderNumber { get; set; } 
         public Stadium Loction { get; set; }
         public DateTime date { get; set; }
+        public int TicketNumber { get; set; }
 
+        public Event()
+        {
+            OrderNumber = 0;
+            TicketNumber = Loction.NumberOfSeats;
+        }
 
         List<Person> seat = new List<Person>();
 
-        public Event(int id, Stadium loction)
+        public Event(Stadium loction)
         {
-            this.id = id;
             Loction = loction;
         }
 
         public void ByTicket(int TicketNumber, Person person)
         {
-            int AfterBy = TicketNumber - Loction.NumberOfSeats;
+          this.TicketNumber = Loction.NumberOfSeats-TicketNumber;
             seat.Add(person);
             date = DateTime.Now;
             date.ToString("dddd, dd MMMM yyyy");
+            OrderNumber++;
+
         }
         public void OrderCanceling(Person person, int TicketNumber)
         {
-            int AfterCanceling = Loction.NumberOfSeats + TicketNumber;
+            this.TicketNumber = Loction.NumberOfSeats + TicketNumber;
             if (seat == null)
             {
                 Console.WriteLine("the list is null");
