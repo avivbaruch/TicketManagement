@@ -18,5 +18,9 @@ namespace TicketManagement
             LastName = lastName;
             this.id = id;
         }
+        public override string ToString()
+        {
+            return $"name:{FirstName} {LastName} id:{id}";
+        }
     }
 }

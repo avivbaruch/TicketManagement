@@ -8,40 +8,43 @@ namespace TicketManagement
 {
     class Event
     {
-        public int OrderNumber { get; set; }
-        public Stadium Loction { get; set; }
-        public DateTime date { get; set; }
-        public int TicketNumber { get; set; }
+        private int OrderNumber { get; set; }
+        private Stadium Loction { get; set; }
+        private DateTime date { get; set; }
+        private int NumberOfSales { get; set; }
+        private int NumberOfPlacesLeft { get; set; }
 
-        public Event()
+        public Event(Stadium loction)
         {
             OrderNumber = 0;
-            TicketNumber = Loction.NumberOfSeats;
+            Loction = loction;
+            NumberOfSales = 0;
+            date = DateTime.Now;
+            NumberOfPlacesLeft = loction.NumberOfSeats;
         }
 
         List<Person> seat = new List<Person>();
 
-        public Event(Stadium loction)
+        public void ByTicket(int NumberOfTicket, Person person)
         {
-            Loction = loction;
-        }
-
-        public void ByTicket(int TicketNumber, Person person)
-        {
-            while (this.TicketNumber < Loction.NumberOfSeats)
+            if (NumberOfPlacesLeft<=Loction.NumberOfSeats && NumberOfTicket <= NumberOfPlacesLeft)
             {
-                this.TicketNumber = Loction.NumberOfSeats - TicketNumber;
                 seat.Add(person);
                 date = DateTime.Now;
                 date.ToString("dddd, dd MMMM yyyy");
-                OrderNumber++;
+                NumberOfSales += NumberOfTicket;
+                NumberOfPlacesLeft -= NumberOfTicket;
+                Console.WriteLine($"There are:{NumberOfPlacesLeft} places left ");
             }
-            Console.WriteLine("There are no places for the show");
+            else
+            {
+             Console.WriteLine("There are no places for the show");
+            }
 
         }
         public void OrderCanceling(Person person, int TicketNumber)
         {
-            this.TicketNumber = Loction.NumberOfSeats + TicketNumber;
+            NumberOfPlacesLeft += TicketNumber;
             if (seat == null)
             {
                 Console.WriteLine("the list is null");

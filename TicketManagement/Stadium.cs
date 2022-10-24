@@ -9,15 +9,18 @@ namespace TicketManagement
     class Stadium
     {
         public string name { get; set; }
-        public int NumberOfSeats{ get; set; }
+        public int NumberOfSeats{ get; set;}
 
         public Stadium(int numberOfSeats, string name)
         {
             NumberOfSeats = numberOfSeats;
             this.name = name;
         }
-      
 
+        public override string ToString()
+        {
+            return $"{name}";
+        }
 
     }
 }
