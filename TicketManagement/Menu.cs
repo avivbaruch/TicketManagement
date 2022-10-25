@@ -10,10 +10,22 @@ namespace TicketManagement
     {
        public void menu()
         {
-            Stadium s = new Stadium(5,"sami ofer");
-            Event evet = new Event(s);
+            Console.WriteLine("Wellcome!\n To create an event click 1 \n To buy a ticket for the event click 2");
+            int choiseUser = int.Parse(Console.ReadLine());
+            switch (choiseUser)
+            {
+                case 1:
+                    Event ev= Admin();
+                    break;
+                case 2:
+                    User(ev);
+                    break;
+            }
+        }
+        public void User(Event evet)
+        {
             Console.WriteLine("to buy ticket press 1.\n to Cancel Order press 2.");
-            int choiseUser =int.Parse(Console.ReadLine());
+            int choiseUser = int.Parse(Console.ReadLine());
             switch (choiseUser)
             {
                 case 1:
@@ -50,9 +62,19 @@ namespace TicketManagement
                     evet.OrderCanceling(p, CanceltOfTickets);
                     break;
 
-             
-            }
 
+            }
         }
+        public Event Admin()
+        {
+            Console.WriteLine("Where is the event taking place?");
+            string NameStadium=Console.ReadLine();
+            Console.WriteLine("How many places the place containing");
+            int NumberOfSeat = int.Parse(Console.ReadLine());
+            Stadium s = new Stadium(NumberOfSeat, NameStadium);
+            Event evet = new Event(s);
+            return evet;
+
+        }  
     }
 }

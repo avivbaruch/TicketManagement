@@ -16,7 +16,7 @@ namespace TicketManagement
 
         public Event(Stadium loction)
         {
-            OrderNumber = 0;
+            OrderNumber = 500;
             Loction = loction;
             NumberOfSales = 0;
             date = DateTime.Now;
