@@ -8,7 +8,23 @@ namespace TicketManagement
 {
     class Menu
     {
-       public void menu()
+        protected List<string> options = new List<string>();
+
+        public string Show() {
+            Console.Clear();
+            Console.WriteLine("Choose an option and press Enter:");
+            for (int i = 0; i < options.Count; i++)
+            {
+
+                Console.WriteLine((i + 1) + options[i]);
+            }
+
+            return Console.ReadLine();
+        }
+
+
+        
+        public void menu()
         {
             Console.WriteLine("Wellcome!\n To create an event click 1 \n To buy a ticket for the event click 2");
             int choiseUser = int.Parse(Console.ReadLine());
@@ -18,11 +34,11 @@ namespace TicketManagement
                     Event ev= Admin();
                     break;
                 case 2:
-                    User(ev);
+                    //User(ev);
                     break;
             }
         }
-        public void User(Event evet)
+        public void User()
         {
             Console.WriteLine("to buy ticket press 1.\n to Cancel Order press 2.");
             int choiseUser = int.Parse(Console.ReadLine());
@@ -76,5 +92,15 @@ namespace TicketManagement
             return evet;
 
         }  
+    }
+
+
+    class MainMenu : Menu
+    {
+        public MainMenu()
+        {
+            options.Add("Buy Ticket");
+            options.Add("Cancel Ticket");
+        }
     }
 }
