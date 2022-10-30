@@ -7,80 +7,73 @@ namespace TicketManagement
     {
         static void Main(string[] args)
         {
-            //Stadium s = new Stadium(5, "sami ofer");
-            //Event evet = new Event(s);
+            List<string> events = new List<string>();
+            events.Add("הופעה של ישי ריבו");
+            events.Add("הופעה של חיים ישראל");
+            events.Add("הופעה אייל גולן");
 
-            //Person david = new Person("david", "shalom", 224817321);
-            //Person aviv = new Person("aviv", "chen", 321547893);
-            //Person haim = new Person("haim", "heler", 123456789);
-
-
-            //evet.ByTicket(20, aviv);
-            //evet.ByTicket(3, david);
-            //evet.ByTicket(3, david);
-            //evet.ByTicket(1, haim);
-            //evet.OrderCanceling(aviv,1);
             Char ch = ' ';
-            while(ch!='Q')
-                {
 
+            while (ch != 'Q')
+            {
                 MainMenu mainMenu = new MainMenu();
                 var userChoice = mainMenu.Show();
                 if (userChoice == "1")
                 {
-                    //Buy Ticket
-                    //Print a menu that allows users to choose a ticket
-                    //var eventNumber = eventsMenu.Show();
-                    foreach (var _event in events)
-                    {
-                        if (_event.Id == eventNumber)
-                        { 
-                        //Code that allows to buy a ticket for the current event
-                        }
-                    }
-                }
-            }
+                    Console.Clear();
 
-            Console.WriteLine("to buy ticket press 1.\n to Cancel Order press 2.");
-            int choiseUser = int.Parse(Console.ReadLine());
-            switch (choiseUser)
-            {
-                case 1:
-                    Console.WriteLine("what your first name");
-                    string FirstName = Console.ReadLine();
+                    Console.WriteLine("Choose an event and press Enter:");
 
-                    Console.WriteLine("what your last name");
-                    string LastName = Console.ReadLine();
+                    ShowTheListEvent(events);
 
-                    Console.WriteLine("what your id");
-                    int id = int.Parse(Console.ReadLine());
-                    Person person = new Person(FirstName, LastName, id);
+                    int EventForUser = int.Parse(Console.ReadLine());
+                    Console.Clear();
+
+                    Person person = CreateAPerson();
+
+                    Stadium s = new Stadium(3, "sami ofer");
+
+                    Event evnet = new Event(s);
 
                     Console.WriteLine("How many tickets do you want?");
                     int AmountOfTickets = int.Parse(Console.ReadLine());
+                    evnet.ByTicket(AmountOfTickets, person);
+                    Console.Clear();
 
-                    evet.ByTicket(AmountOfTickets, person);
-                    break;
-
-                case 2:
-                    Console.WriteLine("what your first name");
-                    string First_Name = Console.ReadLine();
-
-                    Console.WriteLine("what your last name");
-                    string Last_Name = Console.ReadLine();
-
-                    Console.WriteLine("what your id");
-                    int id2 = int.Parse(Console.ReadLine());
-                    Person p = new Person(First_Name, Last_Name, id2);
-
-                    Console.WriteLine("How many tickets do you want to cancel?");
-                    int CanceltOfTickets = int.Parse(Console.ReadLine());
-
-                    evet.OrderCanceling(p, CanceltOfTickets);
-                    break;
-
-
-
+                    Console.WriteLine("Thanks");
+                }
+                ch = 'Q';
             }
         }
+        static Person CreateAPerson()
+        {
+
+
+            Console.WriteLine("what your first name");
+            string FirstName = Console.ReadLine();
+
+            Console.WriteLine("what your last name");
+            string LastName = Console.ReadLine();
+
+            Console.WriteLine("what your id");
+            int id = int.Parse(Console.ReadLine());
+            Person person = new Person(FirstName, LastName, id);
+            return person;
+        }
+        static void ShowTheListEvent(List<string> events)
+        {
+            int num = 1;
+            foreach (var _event in events)
+            {
+                Console.WriteLine(num + " " + _event);
+                num++;
+            }
+        };
+        static void SearchForEventByName(List<string> events)
+        {
+            events.Find(x=>x.);
+        }
+
+    }
+
 }
