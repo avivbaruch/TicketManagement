@@ -1,60 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TicketManagement
 {
-    class Event
+    public class Event
     {
-        private int OrderNumber { get; set; }
-        private Stadium Loction { get; set; }
-        private DateTime date { get; set; }
-        private int NumberOfSales { get; set; }
-        private int NumberOfPlacesLeft { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
+        private Stadium Stadium { get; set; }
+        public List<Ticket> Ticket { get; set; }
 
-        public Event(Stadium loction)
+        public Event(Stadium stadium)
         {
-            OrderNumber = 500;
-            Loction = loction;
-            NumberOfSales = 0;
-            date = DateTime.Now;
-            NumberOfPlacesLeft = loction.NumberOfSeats;
+            Stadium = stadium;
+            FillTickets();
         }
-
-        List<Person> seat = new List<Person>();
-
-        public void ByTicket(int NumberOfTicket, Person person)
+        private void FillTickets()
         {
-            if (NumberOfPlacesLeft<=Loction.NumberOfSeats && NumberOfTicket <= NumberOfPlacesLeft)
+            Ticket = new List<Ticket>(Stadium.NumberOfSeats);
+            for (int i = 0; i < Stadium.NumberOfSeats; i++)
             {
-                seat.Add(person);
-                date = DateTime.Now;
-                date.ToString("dddd, dd MMMM yyyy");
-                NumberOfSales += NumberOfTicket;
-                NumberOfPlacesLeft -= NumberOfTicket;
-                Console.WriteLine($"There are:{NumberOfPlacesLeft} places left ");
+                Ticket tick = new Ticket { Id = i, Price = 200.5 };
             }
-            else
-            {
-             Console.WriteLine("There are no places for the show");
-            }
-
-        }
-        public void OrderCanceling(Person person, int TicketNumber)
-        {
-            NumberOfPlacesLeft += TicketNumber;
-            if (seat == null)
-            {
-                Console.WriteLine("the list is null");
-            }
-            else
-            {
-                Person Remove = seat.Find(x => x.id == person.id);
-                seat.Remove(Remove);
-            }
-
         }
     }
 }
