@@ -34,8 +34,8 @@ namespace TicketManagement
 
         void AndNewEvent()
         {
-            CreateEvent();
-            ListEvents.Add(evnt);
+            Event e = CreateEvent();
+            ListEvents.Add(e);
         }
         string TestOfString(string qury)
         {
