@@ -8,19 +8,19 @@ namespace TicketManagement
 {
     public class Person
     {
-        private string FirstName { get; set; }
-        private string LastName { get; set; }
-        public int id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Id { get; set; }
 
         public Person(string firstName, string lastName, int id)
         {
             FirstName = firstName;
             LastName = lastName;
-            this.id = id;
+            this.Id = id;
         }
         public override string ToString()
         {
-            return $"name:{FirstName} {LastName} id:{id}";
+            return $"name:{FirstName} {LastName} id:{Id}";
         }
     }
 }

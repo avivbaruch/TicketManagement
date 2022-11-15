@@ -51,7 +51,7 @@ namespace TicketManagement
             }
             else
             {
-                Person Remove = seat.Find(x => x.id == person.id);
+                Person Remove = seat.Find(x => x.Id == person.Id);
                 seat.Remove(Remove);
             }
 

@@ -12,6 +12,7 @@ namespace TicketManagement
             {
                 options.Add("Buy Ticket");
                 options.Add("Cancel Ticket");
+                
             }
 
     }

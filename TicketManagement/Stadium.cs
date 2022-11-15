@@ -10,11 +10,10 @@ namespace TicketManagement
     {
         public int id { get; set; }
         public string name { get; set; }
-        public int NumberOfSeats{ get; set;}
+        public int NumberOfSeats { get; set; }
 
-        public Stadium(int id, string name, int numberOfSeats)
+        public Stadium(string name, int numberOfSeats)
         {
-            this.id = id;
             this.name = name;
             NumberOfSeats = numberOfSeats;
         }

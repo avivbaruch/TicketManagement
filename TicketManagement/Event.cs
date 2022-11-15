@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TicketManagement
 {
@@ -9,20 +10,62 @@ namespace TicketManagement
         public string Name { get; set; }
         public DateTime Date { get; set; }
         private Stadium Stadium { get; set; }
-        public List<Ticket> Ticket { get; set; }
+        public List<Ticket> Tickets { get; set; }
+        private List<Person> Customers { get; set; }
 
         public Event(Stadium stadium)
         {
-            Stadium = stadium;
+            //this.Date = date;
+            //this.Id=id;
+            //this.Name = name;
+            this.Stadium = stadium;
+
             FillTickets();
+            Customers = new List<Person>();
         }
         private void FillTickets()
         {
-            Ticket = new List<Ticket>(Stadium.NumberOfSeats);
+            Tickets = new List<Ticket>(Stadium.NumberOfSeats);
             for (int i = 0; i < Stadium.NumberOfSeats; i++)
             {
                 Ticket tick = new Ticket { Id = i, Price = 200.5 };
+                Tickets.Add(tick);
             }
         }
+
+        public void BuyTickets(Person Customer, int NumberOfTicket)
+        {
+            if (Tickets.Count > 0)
+            {
+                if (NumberOfTicket > Tickets.Count)
+                {
+                    Console.WriteLine($" Can't buy tickets, only {this.Tickets.Count} tickets left");
+                }
+                else
+                {
+                    for (int i = 0; i < NumberOfTicket; i++)
+                    {
+                        Ticket tick = new Ticket { Id = i, Price = 200.5 };
+                        Tickets.Remove(Tickets[0]);
+                    }
+                    this.Customers.Add(Customer);
+                }
+            }
+            if (this.Tickets.Count == 0)
+            {
+                Console.WriteLine("All tickets for this event are sold out");
+            }
+        }
+        public void OrderCanceling(Person Customer)
+        {
+            var CustomerToCancel = Customers.FirstOrDefault(c => c.Id == Customer.Id);
+            if (CustomerToCancel != null)
+            {
+                Customers.Remove(CustomerToCancel);
+            }
+            Console.WriteLine("Incorrect details");
+
+        }
+
     }
 }
