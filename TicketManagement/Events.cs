@@ -8,10 +8,14 @@ namespace TicketManagement
 {
     internal class Events : Event
     {
-        private List<Event> ListEvents;
+        public List<Event> ListEvents;
 
-        public Events(Stadium stadium, int id, string name, DateTime date) : base(stadium)
+        public Events(Stadium stadium) : base(stadium)
         {
+            ListEvents = new List<Event>();
+            ListEvents.Add(new Event(stadium) { Name = "Maccbi Tel Aviv VS Hapoel Tel Aviv", Date = DateTime.Now, Id = 1 });
+            ListEvents.Add(new Event(stadium) { Name = "Eyal Golan", Date = DateTime.Now, Id = 2 });
+            ListEvents.Add(new Event(stadium) { Name = "Omer Adam", Date = DateTime.Now, Id = 3 });
         }
 
         Stadium CreateStadium()
@@ -23,16 +27,15 @@ namespace TicketManagement
         }
         Event CreateEvent()
         {
-            int id = TestOfInt("Waht id of your event");
             string NameEvnet = TestOfString("Waht your name event");
             string date = TestOfString("Waht your date");
             DateTime D = DateTime.Parse(date);
-            Stadium stadium =CreateStadium();
-            return (new Event(stadium) { Date= D ,Name= NameEvnet,Id= id});
+            Stadium stadium = CreateStadium();
+            return (new Event(stadium) { Date = D, Name = NameEvnet });
 
         }
 
-        void AndNewEvent()
+        public void AndNewEvent()
         {
             Event e = CreateEvent();
             ListEvents.Add(e);
@@ -42,7 +45,7 @@ namespace TicketManagement
             Console.WriteLine(qury);
             String input = Console.ReadLine();
             string prameter = "";
-            if (input != null && input != " ")
+            if (input != null && input != "")
             {
                 prameter = input;
             }
@@ -58,7 +61,7 @@ namespace TicketManagement
             Console.WriteLine(qury);
             String input = Console.ReadLine();
             int prameter = 0;
-            if (input != null && input != " ")
+            if (input != null && input != "")
             {
                 prameter = int.Parse(input);
             }
@@ -69,5 +72,6 @@ namespace TicketManagement
             }
             return prameter;
         }
+
     }
 }

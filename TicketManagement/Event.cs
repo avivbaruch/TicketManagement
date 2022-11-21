@@ -33,8 +33,12 @@ namespace TicketManagement
             }
         }
 
-        public void BuyTickets(Person Customer, int NumberOfTicket)
+        public bool BuyTickets(Person Customer, int NumberOfTicket)
         {
+            if (this.Tickets.Count == 0)
+            {
+                Console.WriteLine("All tickets for this event are sold out");
+            }
             if (Tickets.Count > 0)
             {
                 if (NumberOfTicket > Tickets.Count)
@@ -48,13 +52,12 @@ namespace TicketManagement
                         Ticket tick = new Ticket { Id = i, Price = 200.5 };
                         Tickets.Remove(Tickets[0]);
                     }
+                    Console.WriteLine($" Helo {Customer.FirstName} Buy Secceesfully");
                     this.Customers.Add(Customer);
+
                 }
             }
-            if (this.Tickets.Count == 0)
-            {
-                Console.WriteLine("All tickets for this event are sold out");
-            }
+            return true;
         }
         public void OrderCanceling(Person Customer)
         {

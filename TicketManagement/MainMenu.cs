@@ -8,12 +8,12 @@ namespace TicketManagement
 {
     class MainMenu : Menu
     {
-            public MainMenu()
-            {
-                options.Add("Buy Ticket");
-                options.Add("Cancel Ticket");
-                
-            }
+        public MainMenu()
+        {
+            options.Add("Buy Ticket");
+            options.Add("Cancel Ticket");
+            options.Add("Add Event");
+        }
 
     }
 }
