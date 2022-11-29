@@ -11,7 +11,8 @@ namespace TicketManagement
     
     public UserMenu()
         {
-            options.Add("");
+            options.Add("Showing all events");
+            options.Add("Scarch event by name");
 
         }
 

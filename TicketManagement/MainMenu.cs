@@ -13,6 +13,7 @@ namespace TicketManagement
             options.Add("Buy Ticket");
             options.Add("Cancel Ticket");
             options.Add("Add Event");
+            options.Add("To see the amount of ticket");
         }
 
     }

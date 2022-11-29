@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketManagement", "TicketManagement\TicketManagement.csproj", "{D6EA48FE-5CD7-4A21-A9D9-861A1BCEFE87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketManagement.UI", "TicketManagement\TicketManagement.UI.csproj", "{D6EA48FE-5CD7-4A21-A9D9-861A1BCEFE87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Logic", "TicketManagement.Logic\TicketManagement.Logic.csproj", "{CEC382CD-BD1F-4C27-8B69-70363B57D35F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketManagement.Models", "TicketManagement.Models\TicketManagement.Models.csproj", "{B2AF70C6-51F2-4D7F-A7B5-CCE98EB1DD95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{D6EA48FE-5CD7-4A21-A9D9-861A1BCEFE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6EA48FE-5CD7-4A21-A9D9-861A1BCEFE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6EA48FE-5CD7-4A21-A9D9-861A1BCEFE87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEC382CD-BD1F-4C27-8B69-70363B57D35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEC382CD-BD1F-4C27-8B69-70363B57D35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEC382CD-BD1F-4C27-8B69-70363B57D35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEC382CD-BD1F-4C27-8B69-70363B57D35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2AF70C6-51F2-4D7F-A7B5-CCE98EB1DD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2AF70C6-51F2-4D7F-A7B5-CCE98EB1DD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2AF70C6-51F2-4D7F-A7B5-CCE98EB1DD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2AF70C6-51F2-4D7F-A7B5-CCE98EB1DD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

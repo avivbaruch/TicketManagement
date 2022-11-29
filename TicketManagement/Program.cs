@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TicketManagement.Models;
 
-namespace TicketManagement
+namespace TicketManagement.Logic
 {
     public static class EventExtinsions
     {
@@ -18,23 +19,55 @@ namespace TicketManagement
             return list;
         }
     }
-
     class Program
     {
         static void Main(string[] args)
         {
-            Stadium stadium = new Stadium("Sami Ofer", 3);
-            Events Events = new Events(stadium);
 
+            Stadium stadium = new Stadium("Sami Ofer", 3);
+            EventsManager Events = new EventsManager(stadium);
+            List<Event> listAfterSearch = new();
             do
             {
                 MainMenu mainMenu = new MainMenu();
-                var userChoice = mainMenu.Show();
-
-                switch (userChoice)
+                UserMenu UserMenu = new UserMenu();
+                var Choice = mainMenu.Show();
+                switch (Choice)
                 {
                     case "1":
-                        Sale(Events.ListEvents, Events);
+
+
+                        var userChoice = UserMenu.Show();
+                        if (userChoice == "1")
+                        {
+                            ShowTheListEvent(Events.ListEvents);
+                            Sale(Events.ListEvents, Events);
+                        }
+                        else
+                        {
+
+                            Char charforSearch = TestOfString("Whice event ar yor search")[0];
+                            Char.ToUpper(charforSearch);
+                            listAfterSearch = SearchForEventByName(Events.ListEvents, charforSearch);
+                            ShowTheListEvent(listAfterSearch);
+
+                            string buyOrNot = TestOfString("To go to buy press 1 \n  to see all event press 2 \n to search another 3");
+                            if (buyOrNot == "1")
+                            {
+                               Sale(listAfterSearch, Events);
+                            }
+                            else if (buyOrNot == "2")
+                            {
+                                ShowTheListEvent(Events.ListEvents);
+                            }
+                            else if (buyOrNot == "3")
+                            {
+                                SearchForEventByName(Events.ListEvents, charforSearch);
+                                Char.ToUpper(charforSearch);
+                            }
+                        }
+
+
                         break;
 
                     case "2":
@@ -44,25 +77,33 @@ namespace TicketManagement
                         break;
 
                     case "3":
-                        Events.AndNewEvent();
+                        string eventName = TestOfString("Waht is the name of event");
+                        string date = TestOfString("What is the date of the event?");
+                        string stadiumName = TestOfString("Waht your name event ?");
+                        int numberOfSeats = TestOfInt("What is the number of seats in the stadium?");
+                        Events.AndNewEvent(eventName, date, stadiumName, numberOfSeats);
+                        break;
+                    case "4":
+                        Console.Clear();
+                        Console.WriteLine("Choose an event and press Enter:");
+                        ShowTheListEvent(Events.ListEvents);
+                        Event eve =selectedEvent(Events.ListEvents);
+                        int numberTicket = Events.AmountOfTickets(eve);
+                        Console.WriteLine("Amount Of Tickets:"+" "+ numberTicket);
                         break;
 
+
                 }
-
-
-                if (userChoice.ToLower() == "q")
+                if (Choice.ToLower() == "q")
                     break;
 
             } while (true);
 
         }
 
-        private static void Sale(List<Event> events, Event ev)
+        static void Sale(List<Event> events, EventsManager ev)
         {
-            Console.Clear();
             Console.WriteLine("Choose an event and press Enter:");
-            ShowTheListEvent(events);
-
             Event selectedFromUser = selectedEvent(events);
 
             Console.Clear();
@@ -108,6 +149,7 @@ namespace TicketManagement
             {
                 eventForUser = int.Parse(input);
             }
+
             return events.FirstOrDefault(e => e.Id == eventForUser);
         }
         static List<Event> SearchForEventByName(List<Event> events, char value)
