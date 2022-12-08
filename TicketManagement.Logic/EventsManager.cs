@@ -76,5 +76,42 @@ namespace TicketManagement.Logic
             Console.WriteLine("Incorrect details");
 
         }
+
+        public void UpdateEvent(string nameEvent, DateTime date, Stadium stadium, string newName,List<Event> events)
+        {
+            var updateEvent=events.FirstOrDefault(x => x.Name == nameEvent);
+            if (updateEvent != null)
+            {
+                updateEvent.Date = date;
+                updateEvent.Stadium=stadium;
+                updateEvent.Name= newName;
+            }
+        }
+        public void UpdateEvent(string nameEvent, DateTime date, Stadium stadium, List<Event> events)
+        {
+            var updateEvent = events.FirstOrDefault(x => x.Name == nameEvent);
+            if (updateEvent != null)
+            {
+                updateEvent.Date = date;
+                updateEvent.Stadium = stadium;
+            }
+        }
+        public void UpdateEvent(string nameEvent, DateTime date,  List<Event> events)
+        {
+            var updateEvent = events.FirstOrDefault(x => x.Name == nameEvent);
+            if (updateEvent != null)
+            {
+                updateEvent.Date = date;
+            }
+        }
+        public void UpdateEvent(string nameEvent, Stadium stadium, List<Event> events)
+        {
+            var updateEvent = events.FirstOrDefault(x => x.Name == nameEvent);
+            if (updateEvent != null)
+            {
+                updateEvent.Stadium = stadium;
+            }
+        }
+        
     }
 }

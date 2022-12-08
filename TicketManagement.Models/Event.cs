@@ -10,9 +10,10 @@ namespace TicketManagement.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
-        private Stadium Stadium { get; set; }
+        public Stadium Stadium { get; set; }
         public List<Ticket> Tickets { get; set; }
         public List<Person> Customers { get; set; }
+      
 
         public Event(Stadium stadium)
         {

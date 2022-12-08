@@ -36,37 +36,38 @@ namespace TicketManagement.Logic
                 {
                     case "1":
 
-
                         var userChoice = UserMenu.Show();
                         if (userChoice == "1")
                         {
                             ShowTheListEvent(Events.ListEvents);
-                            Sale(Events.ListEvents, Events);
+                            Console.WriteLine();
+                            Menu(Events.ListEvents, Events);
                         }
-                        else
+                        if (userChoice == "2")
                         {
 
                             Char charforSearch = TestOfString("Whice event ar yor search")[0];
-                            Char.ToUpper(charforSearch);
-                            listAfterSearch = SearchForEventByName(Events.ListEvents, charforSearch);
+                            Char charUpper = Char.ToUpper(charforSearch);
+                            listAfterSearch = SearchForEventByName(Events.ListEvents, charUpper);
                             ShowTheListEvent(listAfterSearch);
 
-                            string buyOrNot = TestOfString("To go to buy press 1 \n  to see all event press 2 \n to search another 3");
-                            if (buyOrNot == "1")
+                            string choise = TestOfString("To go to buy press 1\nto see all event press 2\nto search another 3");
+                            if (choise == "1")
                             {
-                               Sale(listAfterSearch, Events);
+                                Sale(listAfterSearch, Events);
                             }
-                            else if (buyOrNot == "2")
+                            else if (choise == "2")
                             {
                                 ShowTheListEvent(Events.ListEvents);
                             }
-                            else if (buyOrNot == "3")
+                            else if (choise == "3")
                             {
-                                SearchForEventByName(Events.ListEvents, charforSearch);
-                                Char.ToUpper(charforSearch);
+                                Char charforSearch1 = TestOfString("Whice event ar yor search")[0];
+                                Char charUpper1 = Char.ToUpper(charforSearch1);
+                                SearchForEventByName(Events.ListEvents, charUpper1);
                             }
+                            Menu(Events.ListEvents, Events);
                         }
-
 
                         break;
 
@@ -87,9 +88,14 @@ namespace TicketManagement.Logic
                         Console.Clear();
                         Console.WriteLine("Choose an event and press Enter:");
                         ShowTheListEvent(Events.ListEvents);
-                        Event eve =selectedEvent(Events.ListEvents);
+                        Event eve = selectedEvent(Events.ListEvents);
                         int numberTicket = Events.AmountOfTickets(eve);
-                        Console.WriteLine("Amount Of Tickets:"+" "+ numberTicket);
+                        Console.WriteLine("Amount Of Tickets:" + " " + numberTicket);
+                        Console.ReadLine();
+                        break
+                            ;
+                    case "5":
+                
                         break;
 
 
@@ -103,6 +109,8 @@ namespace TicketManagement.Logic
 
         static void Sale(List<Event> events, EventsManager ev)
         {
+            Console.Clear();
+            ShowTheListEvent(events);
             Console.WriteLine("Choose an event and press Enter:");
             Event selectedFromUser = selectedEvent(events);
 
@@ -188,6 +196,27 @@ namespace TicketManagement.Logic
             }
             return prameter;
         }
-    }
 
+        static void Menu(List<Event> events, EventsManager ev)
+        {
+
+            string choise = TestOfString("to continue buying a ticket for the event press 1\nto see all event press 2\nto search another 3");
+            if (choise == "1")
+            {
+                Sale(events, ev);
+            }
+            else if (choise == "2")
+            {
+                ShowTheListEvent(events);
+            }
+            else if (choise == "3")
+            {
+                Char charforSearch1 = TestOfString("Whice event ar yor search")[0];
+                Char charUpper1 = Char.ToUpper(charforSearch1);
+                SearchForEventByName(events, charUpper1);
+
+            }
+        }
+
+    }
 }
